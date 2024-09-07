@@ -4,6 +4,7 @@ import common.money.Percentage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.Profile;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests the JDBC restaurant repository with a test data source to verify data access and relational-to-object mapping
  * behavior works as expected.
  */
+@Profile("jdbc")
 public class JdbcRestaurantRepositoryTests {
 
 	private JdbcRestaurantRepository repository;

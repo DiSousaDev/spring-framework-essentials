@@ -24,5 +24,5 @@ public interface RewardNetwork {
 	 * @param dining a charge made to a credit card for dining at a restaurant
 	 * @return confirmation of the reward
 	 */
-	public RewardConfirmation rewardAccountFor(Dining dining);
+	RewardConfirmation rewardAccountFor(Dining dining);
 }
