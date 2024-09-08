@@ -7,8 +7,3 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
-test {
-    // TODO-08 comment out before running the RewardNetworkTests
-    exclude '**/RewardNetworkTests.class'
-}
-
