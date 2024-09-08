@@ -2,7 +2,6 @@ package accounts.web;
 
 import accounts.internal.StubAccountManager;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import rewards.internal.account.Account;
 
@@ -22,13 +21,12 @@ public class AccountControllerTests {
 	private AccountController controller;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() {
 		controller = new AccountController(new StubAccountManager());
 	}
 
 	// TODO-07: Remove the @Disabled annotation, run the test, it should now pass.
 	@Test
-	@Disabled
 	public void testHandleListRequest() {
 		List<Account> accounts = controller.accountList();
 
@@ -44,11 +42,15 @@ public class AccountControllerTests {
 
 	// TODO-10a: Remove the @Disabled annotation, run the test, it should pass.
 	@Test
-	@Disabled
 	public void testHandleDetailsRequest() {
 		// TODO-09a: Implement test code which calls the accountDetails() method on the controller.
 		// - It will take one parameter - use "expectedAccountId" defined above
 		// - It will return an Account
+		Account account = controller.accountDetails(expectedAccountId);
+
+		assertNotNull(account);
+		assertEquals(expectedAccountId, account.getEntityId());
+		assertEquals(expectedAccountNumber, account.getNumber());
 
 		// TODO-09b: Define the following assertions:
 		// - The account is not null
