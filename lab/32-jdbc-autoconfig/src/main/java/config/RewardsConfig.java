@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import rewards.RewardNetwork;
 import rewards.internal.RewardNetworkImpl;
 import rewards.internal.account.AccountRepository;
@@ -37,7 +38,6 @@ public class RewardsConfig {
     // - Uncomment @Bean method below
     // - Remove the code above that performs DataSource injection
     // - Fix compile errors in this code
-    /*
     @Bean
     public DataSource dataSource() {
         logger.debug("Creating the datasource bean explicitly");
@@ -48,7 +48,6 @@ public class RewardsConfig {
                         .addScript("classpath:data.sql")
                         .build();
     }
-    */
 
     @Bean
     public RewardNetwork rewardNetwork() {

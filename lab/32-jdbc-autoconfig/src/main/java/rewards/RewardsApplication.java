@@ -2,7 +2,11 @@ package rewards;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 // TODO-00 : In this lab, you are going to exercise the following:
 // - Understanding how auto-configuration is triggered in Spring Boot application
@@ -34,8 +38,14 @@ import org.springframework.boot.SpringApplication;
 
 // TODO-13 (Optional) : Follow the instruction in the lab document.
 //           The section titled "Build and Run using Command Line tools".
+@SpringBootApplication
+public class RewardsApplication implements CommandLineRunner {
 
-public class RewardsApplication {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private RewardsRecipientProperties rewardsRecipientProperties;
+
     static final String SQL = "SELECT count(*) FROM T_ACCOUNT";
 
     final Logger logger
@@ -43,6 +53,14 @@ public class RewardsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RewardsApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        String QUERY = "SELECT count(*) FROM T_ACCOUNT";
+        Long numberOfAccounts = jdbcTemplate.queryForObject(QUERY, Long.class);
+        logger.info("Number of accounts: {}" , numberOfAccounts);
+        logger.info("Recipient: {}" , rewardsRecipientProperties.getName());
     }
 
     // TODO-04 : Let Spring Boot execute database scripts
