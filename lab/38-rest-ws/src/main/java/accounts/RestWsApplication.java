@@ -10,7 +10,7 @@ import config.AppConfig;
 @SpringBootApplication
 @Import(AppConfig.class)
 @EntityScan("rewards.internal")
-public class RestWsApplication {
+public class  RestWsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RestWsApplication.class, args);
